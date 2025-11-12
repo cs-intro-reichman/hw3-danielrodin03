@@ -31,7 +31,6 @@ public class LoanCalc {
 	private static double endBalance(double loan, double rate, int n, double payment) {	
 		for (int i = 0; i < n; i++) {
 			loan = (loan - payment) * rate;
-			System.out.println(loan);
 		}
 		return loan;
 	}
