@@ -70,6 +70,7 @@ public class Algebra {
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
+		if (n == 0) return 1;
 		int sum = 1;
 		for (int i = 0; i < n; i++) {
 			sum = times(sum, x);
@@ -106,12 +107,9 @@ public class Algebra {
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
 		for (int i = 0; i <= x; i++) {
-			if (times(i, i) == x) {
-				return i;
-			} 
-			else if (times(i, i) > x)
-			return i - 1;
+			if (times(i, i) == x) return i; 
+			if (times(i, i) > x) return i - 1;
 		}
-		return 0;
+		return x;
 	}	  	  
 }
