@@ -9,7 +9,7 @@ public class Algebra {
 	    System.out.println(plus(2,3));   // 2 + 3
 	    System.out.println(minus(7,2));  // 7 - 2
    		System.out.println(minus(2,7));  // 2 - 7
- 		System.out.println(times(3,4));  // 3 * 4
+ 		System.out.println(times(3,-4));  // 3 * 4
    		System.out.println(plus(2,times(4,2)));  // 2 + 4 * 2
    		System.out.println(pow(5,3));      // 5^3
    		System.out.println(pow(3,5));      // 3^5
@@ -55,17 +55,17 @@ public class Algebra {
 		int sum = 0;
 		boolean neg = false;
 		if (x1 < 0) {
-			x1 = -x1;
 			neg = !neg;
+			x1 = minus(0, x1);
 		}
 		if (x2 < 0) {
-			x2 = -x2;
 			neg = !neg;
+			x2 = minus(0, x2);
 		}
-			for (int i = 0; i < x2; i++) {
-				sum = plus(sum, x1);
-			}
-		if (neg) sum = -sum;
+		for (int i = 0; i < x2; i++) {
+			sum = plus(sum, x1);
+		}
+		if (neg) sum = minus(0, sum);
 		return sum;
 	}
 
@@ -83,25 +83,25 @@ public class Algebra {
 	public static int div(int x1, int x2) {
 		int count = 0;
 		boolean neg = x1 < 0 ^ x2 < 0;
-		if (x1 < 0) x1 = -x1;
-		if (x2 < 0) x2 = -x2;
+		if (x1 < 0) x1 = times(x1, -1);
+		if (x2 < 0) x2 = times(x2, -1);
 		while (x1 >= x2) { 
 			x1 = minus(x1, x2);
 			count++;
 		}
-		if (neg) count = -count;
+		if (neg) count = times(count, -1);
 		return count;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
 		boolean neg = x1 < 0;
-		if (x1 < 0) x1 = -x1;
-		if (x2 < 0) x2 = -x2;
+		if (x1 < 0) x1 = times(x1, -1);
+		if (x2 < 0) x2 = times(x1, -1);
 		while (x1 >= x2) { 
 			x1 = minus(x1, x2);
 		}
-		if (neg) x1 = -x1;
+		if (neg) x1 = times(x1, -1);
 		return x1;
 	}	
 
