@@ -56,7 +56,7 @@ public class Anagram {
 		str = str.toLowerCase();
 		for (int i = 0; i < str.length(); i++) {
 			char ch = str.charAt(i);
-			if (ch >= 'a' && ch <= 'z' || ch == ' ') {
+			if (ch >= 'a' && ch <= 'z') {
 				newStr += ch;
 			}
 		}
